@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import {useSelector} from "react-redux";
-import {Task} from "../../domain/task";
-import {useAppDispatch} from "../../store/app-dispatch";
-import {RootState} from "../../store/root-reducer";
+import { useSelector } from "react-redux";
+import { Task } from "../../domain/task";
+import { useAppDispatch } from "../../store/app-dispatch";
+import { RootState } from "../../store/root-reducer";
 import Accordion from "../../components/accordion";
 import AccordionDetails from "../../components/details";
 import AccordionSummary from "../../components/summary";
@@ -64,41 +64,41 @@ const Order = styled.div`
 `;
 
 const createLines = (tasks: Task[]) => {
-    return tasks.map((task) => (
-        <LineContainer key={task.id}>
-            <Line>
-                <Accordion>
-                    {{
-                        summary: <AccordionSummary>{task.title}</AccordionSummary>,
-                        details: (
-                            <AccordionDetails>
-                                <Intervals>
-                                    {task.intervals.map((interval, index) => (
-                                        <Interval key={interval.id}>
-                                            <Order>{index + 1}.</Order>
-                                            <From>Started at: {interval.start}</From>
-                                            <Arrow>-&gt;</Arrow>
-                                            <To>Ended at: {interval.end}</To>
-                                        </Interval>
-                                    ))}
-                                </Intervals>
-                            </AccordionDetails>
-                        ),
-                    }}
-                </Accordion>
-            </Line>
-        </LineContainer>
-    ));
+  return tasks.map((task) => (
+    <LineContainer key={task.id}>
+      <Line>
+        <Accordion>
+          {{
+            summary: <AccordionSummary>{task.title}</AccordionSummary>,
+            details: (
+              <AccordionDetails>
+                <Intervals>
+                  {task.intervals.map((interval, index) => (
+                    <Interval key={interval.id}>
+                      <Order>{index + 1}.</Order>
+                      <From>Started at: {interval.start}</From>
+                      <Arrow>-&gt;</Arrow>
+                      <To>Ended at: {interval.end}</To>
+                    </Interval>
+                  ))}
+                </Intervals>
+              </AccordionDetails>
+            ),
+          }}
+        </Accordion>
+      </Line>
+    </LineContainer>
+  ));
 };
 const Tasks: React.FC = () => {
-    const dispatch = useAppDispatch();
-    const tasks = useSelector((state: RootState) => state.tasks.tasks);
+  const dispatch = useAppDispatch();
+  const tasks = useSelector((state: RootState) => state.tasks.tasks);
 
-    return (
-        <Container>
-            <Lines>{createLines(tasks)}</Lines>
-        </Container>
-    );
+  return (
+    <Container>
+      <Lines>{createLines(tasks)}</Lines>
+    </Container>
+  );
 };
 
 export default Tasks;

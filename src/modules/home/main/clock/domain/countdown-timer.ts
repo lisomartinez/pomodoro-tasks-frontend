@@ -4,12 +4,11 @@ import Timer from "./timer";
 
 export default class CountdownTimer {
   constructor(
-      private $color: Color = new Color(),
-      private $path: Path = new Path(),
-      count = 0,
-      private $timer: Timer = new Timer(count)
-  ) {
-  }
+    private $color: Color = new Color(),
+    private $path: Path = new Path(),
+    count = 0,
+    private $timer: Timer = new Timer(count)
+  ) {}
 
   static of(number: number): CountdownTimer {
     return new CountdownTimer(new Color(), new Path(), number);

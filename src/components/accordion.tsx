@@ -1,7 +1,7 @@
-import React, {ReactElement, ReactNode, useEffect, useState,} from "react";
+import React, { ReactElement, ReactNode, useEffect, useState } from "react";
 import styled from "styled-components";
-import {animated, useSpring} from "react-spring";
-import {useMeasure} from "react-use";
+import { animated, useSpring } from "react-spring";
+import { useMeasure } from "react-use";
 
 type Props = {
   children: {
@@ -17,9 +17,9 @@ const Container = styled.div`
 `;
 
 const haveTwoChildren = (children: ReactElement[]) =>
-    children !== null && React.Children.count(children) === 2;
+  children !== null && React.Children.count(children) === 2;
 
-const Accordion: React.FC<Props> = ({children}: Props) => {
+const Accordion: React.FC<Props> = ({ children }: Props) => {
   // const [toggle, setToggle] = useState(false);
   const defaultHeight = "0px";
 
@@ -30,7 +30,7 @@ const Accordion: React.FC<Props> = ({children}: Props) => {
   const [contentHeight, setContentHeight] = useState(defaultHeight);
 
   // Gets the height of the element (ref)
-  const [ref, {height}] = useMeasure<HTMLDivElement>();
+  const [ref, { height }] = useMeasure<HTMLDivElement>();
 
   // Animations
   const expand = useSpring({
@@ -44,12 +44,12 @@ const Accordion: React.FC<Props> = ({children}: Props) => {
 
     // Adds resize event listener
     window.addEventListener("resize", () =>
-        setContentHeight(height.toString())
+      setContentHeight(height.toString())
     );
 
     // Clean-up
     return window.removeEventListener("resize", () =>
-        setContentHeight(height.toString())
+      setContentHeight(height.toString())
     );
   }, [height]);
 
@@ -58,12 +58,12 @@ const Accordion: React.FC<Props> = ({children}: Props) => {
   };
 
   return (
-      <Container>
-        <div onClick={showDetails}>{children.summary}</div>
-        <animated.div style={expand}>
-          <div ref={ref}>{children.details}</div>
-        </animated.div>
-      </Container>
+    <Container>
+      <div onClick={showDetails}>{children.summary}</div>
+      <animated.div style={expand}>
+        <div ref={ref}>{children.details}</div>
+      </animated.div>
+    </Container>
   );
 };
 

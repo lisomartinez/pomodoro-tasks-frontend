@@ -1,5 +1,5 @@
-import {v4 as uuidv4} from "uuid";
-import {Task} from "./task";
+import { v4 as uuidv4 } from "uuid";
+import { Task } from "./task";
 
 export default class TaskService {
   getCurrentTask = (): Task => {
@@ -9,7 +9,7 @@ export default class TaskService {
   };
 
   saveCurrent = (task: Task | undefined) =>
-      localStorage.setItem("currentTask", JSON.stringify(task));
+    localStorage.setItem("currentTask", JSON.stringify(task));
 
   createNewTask = (): Task => {
     return this.newTask();

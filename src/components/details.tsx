@@ -1,4 +1,4 @@
-import React, {ReactNode} from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -8,7 +8,7 @@ const Container = styled.div`
 type Props = {
   children: ReactNode;
 };
-const AccordionDetails: React.FC<Props> = ({children}: Props) => {
+const AccordionDetails: React.FC<Props> = ({ children }: Props) => {
   return <Container>{children}</Container>;
 };
 

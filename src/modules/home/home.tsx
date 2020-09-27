@@ -18,14 +18,14 @@ const Content = styled.div`
 `;
 
 const Home: React.FC = () => {
-    return (
-        <Container>
-            <Content>
-                <Main/>
-            </Content>
-            <TaskBar/>
-        </Container>
-    );
+  return (
+    <Container>
+      <Content>
+        <Main />
+      </Content>
+      <TaskBar />
+    </Container>
+  );
 };
 
 export default Home;

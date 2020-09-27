@@ -1,4 +1,4 @@
-import {Task} from "../../domain/task";
+import { Task } from "../../domain/task";
 
 export type TaskState = {
   currentTask: Task;

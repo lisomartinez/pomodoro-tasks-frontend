@@ -31,19 +31,19 @@ const Button = styled.div`
 `;
 
 type Props = {
-    onStart: React.MouseEventHandler<HTMLDivElement>;
-    onStop: React.MouseEventHandler<HTMLDivElement>;
+  onStart: React.MouseEventHandler<HTMLDivElement>;
+  onStop: React.MouseEventHandler<HTMLDivElement>;
 };
 
 const ButtonBar: React.FC<Props> = (props: Props) => {
-    const {onStart, onStop} = props;
-    return (
-        <Container>
-            <Button onClick={onStart}>START</Button>
-            <Button onClick={onStop}>STOP</Button>
-            <Button>PAUSE</Button>
-        </Container>
-    );
+  const { onStart, onStop } = props;
+  return (
+    <Container>
+      <Button onClick={onStart}>START</Button>
+      <Button onClick={onStop}>STOP</Button>
+      <Button>PAUSE</Button>
+    </Container>
+  );
 };
 
 export default ButtonBar;

@@ -1,8 +1,8 @@
-import React, {ReactNode} from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 type Props = {
-    children: ReactNode;
+  children: ReactNode;
 };
 
 const Container = styled.div`
@@ -17,12 +17,12 @@ const Item = styled.div`
   margin-left: 1rem;
 `;
 
-const Summary: React.FC<Props> = ({children}: Props) => {
-    return (
-        <Container>
-            <Item>{children}</Item>
-        </Container>
-    );
+const Summary: React.FC<Props> = ({ children }: Props) => {
+  return (
+    <Container>
+      <Item>{children}</Item>
+    </Container>
+  );
 };
 
 export default Summary;

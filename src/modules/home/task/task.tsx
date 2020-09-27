@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import {Task} from "../../../domain/task";
-import {Interval} from "../../../domain/interval";
+import { Task } from "../../../domain/task";
+import { Interval } from "../../../domain/interval";
 import IntervalComponent from "./interval";
 
 const Container = styled.section`
@@ -36,7 +36,7 @@ const TitleText = styled.div`
   margin-right: 1rem;
   width: 100%;
 `;
-const TitleInput = styled.input.attrs({type: "text"})`
+const TitleInput = styled.input.attrs({ type: "text" })`
   appearance: none;
   border: none;
   outline: none;
@@ -70,34 +70,34 @@ const TitleButton = styled.div`
 
 const IntervalElement = styled.div``;
 type Props = {
-    task: Task;
-    onNew: React.MouseEventHandler<HTMLDivElement>;
-    onTitleUpdate: React.FormEventHandler<HTMLInputElement>;
+  task: Task;
+  onNew: React.MouseEventHandler<HTMLDivElement>;
+  onTitleUpdate: React.FormEventHandler<HTMLInputElement>;
 };
 
 const TaskComponent: React.FC<Props> = (props: Props) => {
-    const {task, onNew, onTitleUpdate} = props;
-    return (
-        <Container>
-            <Title>
-                <TitleText>
-                    <div>Doing:</div>
-                    <TitleInput value={task.title} onChange={onTitleUpdate}/>{" "}
-                </TitleText>
-                <TitleButton onClick={onNew}>NEW</TitleButton>{" "}
-            </Title>
-            <Intervals>
-                Intervals:
-                {task.intervals.map((interval: Interval, index: number) => (
-                    <IntervalComponent
-                        index={index + 1}
-                        key={interval.id}
-                        interval={interval}
-                    />
-                ))}
-            </Intervals>
-        </Container>
-    );
+  const { task, onNew, onTitleUpdate } = props;
+  return (
+    <Container>
+      <Title>
+        <TitleText>
+          <div>Doing:</div>
+          <TitleInput value={task.title} onChange={onTitleUpdate} />{" "}
+        </TitleText>
+        <TitleButton onClick={onNew}>NEW</TitleButton>{" "}
+      </Title>
+      <Intervals>
+        Intervals:
+        {task.intervals.map((interval: Interval, index: number) => (
+          <IntervalComponent
+            index={index + 1}
+            key={interval.id}
+            interval={interval}
+          />
+        ))}
+      </Intervals>
+    </Container>
+  );
 };
 
 export default TaskComponent;

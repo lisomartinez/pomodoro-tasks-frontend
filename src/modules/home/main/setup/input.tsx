@@ -15,35 +15,35 @@ const TextBox = styled.input`
 `;
 
 type Props = {
-    minutes: number;
-    seconds: number;
-    onMinChange: React.FormEventHandler<HTMLInputElement>;
-    onSecsChange: React.FormEventHandler<HTMLInputElement>;
+  minutes: number;
+  seconds: number;
+  onMinChange: React.FormEventHandler<HTMLInputElement>;
+  onSecsChange: React.FormEventHandler<HTMLInputElement>;
 };
 
 const Input: React.FC<Props> = (props: Props) => {
-    const {minutes, seconds, onMinChange, onSecsChange} = props;
-    return (
-        <Container>
-            <TextBox
-                type="number"
-                min="0"
-                max="59"
-                step="1"
-                value={minutes}
-                onChange={onMinChange}
-            />
-            <span>:</span>
-            <TextBox
-                type="number"
-                min="0"
-                max="59"
-                step="1"
-                value={seconds}
-                onChange={onSecsChange}
-            />
-        </Container>
-    );
+  const { minutes, seconds, onMinChange, onSecsChange } = props;
+  return (
+    <Container>
+      <TextBox
+        type="number"
+        min="0"
+        max="59"
+        step="1"
+        value={minutes}
+        onChange={onMinChange}
+      />
+      <span>:</span>
+      <TextBox
+        type="number"
+        min="0"
+        max="59"
+        step="1"
+        value={seconds}
+        onChange={onSecsChange}
+      />
+    </Container>
+  );
 };
 
 export default Input;

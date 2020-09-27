@@ -1,5 +1,5 @@
-import {configureStore} from "@reduxjs/toolkit";
-import {epicMiddleware, rootEpic} from "./root-epic";
+import { configureStore } from "@reduxjs/toolkit";
+import { epicMiddleware, rootEpic } from "./root-epic";
 import rootReducer from "./root-reducer";
 
 const store = configureStore({

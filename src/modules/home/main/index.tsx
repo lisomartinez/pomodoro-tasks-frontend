@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Clock from "./clock/components";
 import Input from "./setup/input";
 import ButtonBar from "./setup/button-bar";
-import {useAppDispatch} from "../../../store/app-dispatch";
+import { useAppDispatch } from "../../../store/app-dispatch";
 
 const Container = styled.div`
   color: white;
@@ -65,22 +65,22 @@ const Main: React.FC = () => {
   };
 
   return (
-      <Container>
-        <Icon>
-          <Clock running={running}/>
-        </Icon>
-        <Form>
-          <Input
-              seconds={seconds}
-              minutes={minutes}
-              onMinChange={(e) => updateMinutes(e)}
-              onSecsChange={(e) => updateSeconds(e)}
-          />{" "}
-        </Form>
-        <Buttons>
-          <ButtonBar onStart={(e) => start(e)} onStop={(e) => stop(e)}/>
-        </Buttons>
-      </Container>
+    <Container>
+      <Icon>
+        <Clock running={running} />
+      </Icon>
+      <Form>
+        <Input
+          seconds={seconds}
+          minutes={minutes}
+          onMinChange={(e) => updateMinutes(e)}
+          onSecsChange={(e) => updateSeconds(e)}
+        />{" "}
+      </Form>
+      <Buttons>
+        <ButtonBar onStart={(e) => start(e)} onStop={(e) => stop(e)} />
+      </Buttons>
+    </Container>
   );
 };
 

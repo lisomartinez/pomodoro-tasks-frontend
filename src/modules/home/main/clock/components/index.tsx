@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import CountdownTimer from "../domain/countdown-timer";
 import ClockSvg from "./clock-svg";
@@ -9,24 +9,24 @@ type Props = {
   running: boolean;
 };
 const Clock: React.FC<Props> = (props: Props) => {
-  const {running} = props;
+  const { running } = props;
 
   const [countdown, setCountdown] = useState(CountdownTimer.of(25));
 
   const cleanOnFinished = useCallback(
-      (interval: number) => {
-        if (countdown.hasFinished()) {
-          clearInterval(interval);
-        }
-      },
-      [countdown]
+    (interval: number) => {
+      if (countdown.hasFinished()) {
+        clearInterval(interval);
+      }
+    },
+    [countdown]
   );
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (running) {
         setCountdown((actualCountdown: CountdownTimer) =>
-            actualCountdown.next()
+          actualCountdown.next()
         );
       }
     }, ONE_SECOND);
@@ -35,11 +35,11 @@ const Clock: React.FC<Props> = (props: Props) => {
   }, [cleanOnFinished, running]);
 
   return (
-      <ClockSvg
-          color={countdown.color()}
-          path={countdown.path()}
-          time={countdown.time()}
-      />
+    <ClockSvg
+      color={countdown.color()}
+      path={countdown.path()}
+      time={countdown.time()}
+    />
   );
 };
 

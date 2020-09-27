@@ -1,6 +1,6 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Task} from "../../domain/task";
-import {TaskState} from "./types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Task } from "../../domain/task";
+import { TaskState } from "./types";
 
 const taskService: TaskService = new TaskService();
 const initialState: TaskState = {
@@ -42,7 +42,7 @@ const taskSlice = createSlice({
   reducers: {
     updatedTask(state, action: PayloadAction<Task>) {
       state.tasks = state.tasks.map((task) =>
-          task.id === action.payload.id ? action.payload : task
+        task.id === action.payload.id ? action.payload : task
       );
       // state.currentTask =
       //   state.currentTask.id === action.payload.id
@@ -53,7 +53,7 @@ const taskSlice = createSlice({
     loadCurrentTask(state, action: PayloadAction<Task>) {
       state.currentTask = action.payload;
       if (
-          state.tasks.find((task) => task.id === action.payload.id) !== undefined
+        state.tasks.find((task) => task.id === action.payload.id) !== undefined
       ) {
         state.isNew = false;
       } else {

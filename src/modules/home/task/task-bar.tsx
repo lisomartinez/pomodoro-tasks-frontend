@@ -1,13 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import {v4 as uuidv4} from "uuid";
-import {useSelector} from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+import { useSelector } from "react-redux";
 
-import {Task} from "../../../domain/task";
+import { Task } from "../../../domain/task";
 import TaskComponent from "./task";
-import {RootState} from "../../../store/root-reducer";
-import {addNewTask, getCurrentTask, updateTask,} from "../../../store/tasks/actions";
-import {useAppDispatch} from "../../../store/app-dispatch";
+import { RootState } from "../../../store/root-reducer";
+import {
+  addNewTask,
+  getCurrentTask,
+  updateTask,
+} from "../../../store/tasks/actions";
+import { useAppDispatch } from "../../../store/app-dispatch";
 
 const SideBar = styled.div`
   grid-area: bar;
@@ -51,22 +55,22 @@ const TaskBar: React.FC = () => {
     dispatch(addNewTask());
   };
   const updateTitle = (e: React.FormEvent<HTMLInputElement>) => {
-    const newTask = {...task};
+    const newTask = { ...task };
     newTask.title = e.currentTarget.value;
     dispatch(updateTask(newTask));
   };
   return (
-      <SideBar>
-        {currentTask !== undefined ? (
-            <TaskComponent
-                task={currentTask}
-                onNew={(e) => addTask(e)}
-                onTitleUpdate={(e) => updateTitle(e)}
-            />
-        ) : (
-            <div/>
-        )}
-      </SideBar>
+    <SideBar>
+      {currentTask !== undefined ? (
+        <TaskComponent
+          task={currentTask}
+          onNew={(e) => addTask(e)}
+          onTitleUpdate={(e) => updateTitle(e)}
+        />
+      ) : (
+        <div />
+      )}
+    </SideBar>
   );
 };
 
