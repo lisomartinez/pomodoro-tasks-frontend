@@ -20,6 +20,7 @@
     "redux-observable": "^1.2.0",
     "rxjs": "^6.6.3",
     "styled-components": "^5.2.0",
+    "typesafe-actions": "^5.1.0",
     "uuid": "^8.3.0"
   },
   "scripts": {

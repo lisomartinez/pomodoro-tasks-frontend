@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
-import { v4 as uuidv4 } from "uuid";
-import { useSelector } from "react-redux";
-
-import { Task } from "../../../domain/task";
+import {useSelector} from "react-redux";
 import TaskComponent from "./task";
-import { RootState } from "../../../store/root-reducer";
-import {
-  addNewTask,
-  getCurrentTask,
-  updateTask,
-} from "../../../store/tasks/actions";
-import { useAppDispatch } from "../../../store/app-dispatch";
+import {RootState} from "../../../store/root-reducer";
+import {addNewTask, getCurrentTask, updateTask,} from "../../../store/tasks/actions";
+import {useAppDispatch} from "../../../store/app-dispatch";
 
 const SideBar = styled.div`
   grid-area: bar;
@@ -24,27 +17,14 @@ const Label = styled.div`
   font-size: 1.2rem;
 `;
 
-const createNewTask = (): Task => {
-  return {
-    id: uuidv4(),
-    title: "",
-    intervals: [],
-  };
-};
-
 const TaskBar: React.FC = () => {
   const dispatch = useAppDispatch();
+  const enabled = useSelector((state: RootState) => state.tasks.isNew);
 
   const currentTask = useSelector((state: RootState) => {
     console.log("STATE", state);
     console.log("CURRENT: ", state.tasks.currentTask);
     return state.tasks.currentTask;
-  });
-
-  const [task, setTask] = useState<Task>({
-    id: "",
-    title: "",
-    intervals: [],
   });
 
   useEffect(() => {
@@ -55,7 +35,7 @@ const TaskBar: React.FC = () => {
     dispatch(addNewTask());
   };
   const updateTitle = (e: React.FormEvent<HTMLInputElement>) => {
-    const newTask = { ...task };
+    const newTask = {...currentTask};
     newTask.title = e.currentTarget.value;
     dispatch(updateTask(newTask));
   };
@@ -63,9 +43,10 @@ const TaskBar: React.FC = () => {
     <SideBar>
       {currentTask !== undefined ? (
         <TaskComponent
-          task={currentTask}
-          onNew={(e) => addTask(e)}
-          onTitleUpdate={(e) => updateTitle(e)}
+            task={currentTask}
+            onNew={(e) => addTask(e)}
+            onTitleUpdate={(e) => updateTitle(e)}
+            disabled={enabled}
         />
       ) : (
         <div />

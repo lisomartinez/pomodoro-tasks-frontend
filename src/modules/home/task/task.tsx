@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Task } from "../../../domain/task";
-import { Interval } from "../../../domain/interval";
+import {Task} from "../../../domain/task";
+import {Interval} from "../../../domain/interval";
 import IntervalComponent from "./interval";
 
 const Container = styled.section`
@@ -70,21 +70,26 @@ const TitleButton = styled.div`
 
 const IntervalElement = styled.div``;
 type Props = {
-  task: Task;
-  onNew: React.MouseEventHandler<HTMLDivElement>;
-  onTitleUpdate: React.FormEventHandler<HTMLInputElement>;
+    task: Task;
+    onNew: React.MouseEventHandler<HTMLDivElement>;
+    onTitleUpdate: React.FormEventHandler<HTMLInputElement>;
+    disabled: boolean;
 };
 
 const TaskComponent: React.FC<Props> = (props: Props) => {
-  const { task, onNew, onTitleUpdate } = props;
+    const {task, onNew, onTitleUpdate, disabled} = props;
   return (
     <Container>
       <Title>
-        <TitleText>
-          <div>Doing:</div>
-          <TitleInput value={task.title} onChange={onTitleUpdate} />{" "}
-        </TitleText>
-        <TitleButton onClick={onNew}>NEW</TitleButton>{" "}
+          <TitleText>
+              <div>Doing:</div>
+              <TitleInput
+                  value={task.title}
+                  onChange={onTitleUpdate}
+                  disabled={disabled}
+              />
+          </TitleText>
+          <TitleButton onClick={onNew}>NEW</TitleButton>{" "}
       </Title>
       <Intervals>
         Intervals:

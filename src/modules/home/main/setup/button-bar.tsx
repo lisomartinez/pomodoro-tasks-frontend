@@ -12,7 +12,11 @@ const Container = styled.div`
   height: 100%;
 `;
 
-const Button = styled.div`
+type ButtonsProps = {
+    disabled: boolean;
+};
+
+const Button = styled.div<ButtonsProps>`
   cursor: pointer;
   border: 1px solid whitesmoke;
   width: 150px;
@@ -23,26 +27,30 @@ const Button = styled.div`
   align-items: center;
   align-content: center;
   justify-content: center;
-
+  background-color: ${(props) => (props.disabled ? "black" : "inherit")};
   &:hover {
-    color: darkred;
-    background-color: #07090d;
+    color: ${(props) => (props.disabled ? "inherit" : "darkred")};
+    background-color: ${(props) => (props.disabled ? "black" : "#07090d")};
   }
 `;
 
 type Props = {
-  onStart: React.MouseEventHandler<HTMLDivElement>;
-  onStop: React.MouseEventHandler<HTMLDivElement>;
+    onStart: React.MouseEventHandler<HTMLDivElement>;
+    onStop: React.MouseEventHandler<HTMLDivElement>;
+    enabled: boolean;
 };
 
-const ButtonBar: React.FC<Props> = (props: Props) => {
-  const { onStart, onStop } = props;
-  return (
-    <Container>
-      <Button onClick={onStart}>START</Button>
-      <Button onClick={onStop}>STOP</Button>
-      <Button>PAUSE</Button>
-    </Container>
+const ButtonBar: React.FC<Props> = ({onStart, onStop, enabled}: Props) => {
+    return (
+        <Container>
+            <Button onClick={onStart} disabled={enabled}>
+                START
+            </Button>
+            <Button onClick={onStop} disabled={enabled}>
+                STOP
+            </Button>
+            <Button disabled={enabled}>PAUSE</Button>
+        </Container>
   );
 };
 
